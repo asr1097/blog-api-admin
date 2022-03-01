@@ -12,6 +12,7 @@ const renderForm = () => {
     passwordField.name = "password";
     passwordField.id = "password";
     let submitField = document.createElement("input");
+    submitField.type = "submit";
     loginForm.appendChild(usernameField);
     loginForm.appendChild(passwordField);
     loginForm.appendChild(submitField);
