@@ -45,9 +45,10 @@ const fetchData = () => {
         method: "GET",
         headers: {
             "Authorization": `Bearer ${localStorage.getItem("token")}`
-        }.then(res => res.json())
-        .then(data => renderPosts(data))
+        }
     })
+        .then(res => res.json())
+        .then(data => renderPosts(data))
 }
 
 const renderPosts = (data) => {
