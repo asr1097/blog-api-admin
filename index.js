@@ -89,7 +89,6 @@ const renderPosts = (data) => {
             singleComment.appendChild(date);
             commentList.appendChild(singleComment);
         })
-        commentList.appendChild(commentForm);
         list_item.appendChild(commentList);
         mainList.appendChild(list_item);
     })
