@@ -45,7 +45,8 @@ const fetchData = () => {
     fetch("https://sheltered-anchorage-95159.herokuapp.com/admin/", {
         method: "GET",
         headers: {
-            "Authorization": `Bearer ${localStorage.getItem("token")}`
+            "Authorization": `Bearer ${localStorage.getItem("token")}`,
+            "Access-Control-Allow-Origin": "*"
         }
     })
         .then(res => res.json())
