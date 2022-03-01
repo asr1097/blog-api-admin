@@ -31,6 +31,9 @@ const renderForm = () => {
 const fetchLogin = (data) => {
     fetch("https://sheltered-anchorage-95159.herokuapp.com/admin/login", {
             method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
             body: JSON.stringify(data)
         }).then(response => response.json())
         .then(res => {
