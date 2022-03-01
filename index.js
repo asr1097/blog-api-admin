@@ -91,7 +91,7 @@ const renderPosts = (data) => {
     main.appendChild(mainList);
 }
 
-if(localStorage.getItem("token") === undefined || null) {
+if(localStorage.getItem("token") === null) {
     renderForm();
 } else {
     fetchData()
