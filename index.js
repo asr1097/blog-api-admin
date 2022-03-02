@@ -101,7 +101,7 @@ const renderPosts = (data) => {
         let title = document.createElement("input");
         let text = document.createElement("input");
         let published = document.createElement("input");
-        let id = document.createElement("input");
+        let _id = document.createElement("input");
         let submit = document.createElement("input");
         title.type = "text";
         title.name = "title";
@@ -109,9 +109,9 @@ const renderPosts = (data) => {
         text.name = "text"
         published.type = "checkbox";
         published.name = "published";
-        id.type = "text";
-        id.value = post._id;
-        id.hidden = true;
+        _id.type = "text";
+        _id.value = post._id;
+        _id.hidden = true;
         submit.type = "submit";
         submit.value = "Update post";
         let commentList = document.createElement("ul");
@@ -121,7 +121,7 @@ const renderPosts = (data) => {
         postForm.appendChild(title);
         postForm.appendChild(text);
         postForm.appendChild(published);
-        postForm.appendChild(id);
+        postForm.appendChild(_id);
         postForm.appendChild(submit);
         list_item.appendChild(postForm);
         postForm.addEventListener("submit", updatePost);
