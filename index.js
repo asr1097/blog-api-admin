@@ -62,6 +62,16 @@ const fetchData = () => {
         })
 }
 
+const deleteComment = (ev) => {
+    ev.preventDefault();
+    fetch(`https://sheltered-anchorage-95159.herokuapp.com/admin/${ev.post.value}/${ev.comment.value}`, {
+        method: "delete",
+        headers: {
+            "Authorization": `Bearer ${localStorage.getItem("token")}`
+        }
+    }).then(response => location.reload()).catch(err => console.error(err))
+}
+
 const renderPosts = (data) => {
     while(main.firstChild) {
         main.removeChild(main.firstChild)
@@ -94,10 +104,12 @@ const renderPosts = (data) => {
             let submitInput = document.createElement("input");
             postInput.type = "text";
             postInput.value = post._id;
+            postInput.name = "post";
             postInput.hidden = true;
             commentInput.type = "text";
             commentInput.value = index;
             commentInput.hidden = true;
+            commentInput.name = "comment";
             submitInput.type = "submit";
             deleteForm.appendChild(postInput);
             deleteForm.appendChild(commentInput);
@@ -112,6 +124,8 @@ const renderPosts = (data) => {
             singleComment.appendChild(date);
             singleComment.appendChild(deleteForm);
             commentList.appendChild(singleComment);
+
+            deleteForm.addEventListener("submit", deleteComment);
         })
         list_item.appendChild(commentList);
         mainList.appendChild(list_item);
