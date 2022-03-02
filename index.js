@@ -72,6 +72,22 @@ const deleteComment = (ev) => {
     }).then(response => location.reload()).catch(err => console.error(err))
 }
 
+const updatePost = (ev) => {
+    ev.preventDefault();
+    let data = {
+        title: ev.target.title.value,
+        text: ev.target.text.value,
+        published: ev.target.published.value
+    }
+    fetch(`https://sheltered-anchorage-95159.herokuapp.com/admin/${ev.target.id.value}`, {
+        method: "PUT",
+        headers: {
+            "Authorization": `Bearer ${localStorage.getItem("token")}`
+        },
+        body: JSON.stringify(data)
+    }).then(res => location.reload()).catch(err => console.error(err));
+}
+
 const renderPosts = (data) => {
     while(main.firstChild) {
         main.removeChild(main.firstChild)
@@ -80,16 +96,34 @@ const renderPosts = (data) => {
     let mainList = document.createElement("ul");
     data.forEach(post => {
         let list_item = document.createElement("li");
-        let title = document.createElement("h3");
-        let text = document.createElement("p");
-        let date = document.createElement("p");
+        let postForm = document.createElement("form");
+        let title = document.createElement("input");
+        let text = document.createElement("input");
+        let published = document.createElement("input");
+        let id = document.createElement("input");
+        let submit = document.createElement("input");
+        title.type = "text";
+        title.name = "title";
+        text.type = "text";
+        text.name = "text"
+        published.type = "checkbox";
+        published.name = "published";
+        id.type = "text";
+        id.value = post._id;
+        id.hidden = true;
+        submit.type = "submit";
+        submit.value = "Update post";
         let commentList = document.createElement("ul");
-        title.textContent = post.title;
-        text.textContent = post.text;
-        date.textContent = post.timestamp;
-        list_item.appendChild(title);
-        list_item.appendChild(text);
-        list_item.appendChild(date);
+        title.value = post.title;
+        text.value = post.text;
+        published.value = post.published ? "on" : "off";
+        postForm.appendChild(title);
+        postForm.appendChild(text);
+        postForm.appendChild(published);
+        postForm.appendChild(id);
+        postForm.appendChild(submit);
+        list_item.appendChild(postForm);
+        postForm.addEventListener("submit", updatePost);
         post.comments.forEach((comment, index) => {
             let singleComment = document.createElement("li");
             let title = document.createElement("h5");
