@@ -94,6 +94,7 @@ const renderPosts = (data) => {
             deleteInput.type = "number";
             deleteInput.name = "index";
             deleteInput.value = index;
+            deleteForm.appendChild(deleteInput);
             title.textContent = comment.title;
             text.textContent = comment.text;
             user.textContent = comment.user;
@@ -102,6 +103,7 @@ const renderPosts = (data) => {
             singleComment.appendChild(text);
             singleComment.appendChild(user);
             singleComment.appendChild(date);
+            singleComment.appendChild(deleteForm);
             commentList.appendChild(singleComment);
         })
         list_item.appendChild(commentList);
