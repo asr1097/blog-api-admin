@@ -116,7 +116,7 @@ const renderPosts = (data) => {
         let commentList = document.createElement("ul");
         title.value = post.title;
         text.value = post.text;
-        published.value = post.published ? "on" : "off";
+        published.checked = post.published ? true : false;
         postForm.appendChild(title);
         postForm.appendChild(text);
         postForm.appendChild(published);
