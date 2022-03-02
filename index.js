@@ -65,7 +65,7 @@ const fetchData = () => {
 const deleteComment = (ev) => {
     ev.preventDefault();
     fetch(`https://sheltered-anchorage-95159.herokuapp.com/admin/${ev.target.post.value}/${ev.target.comment.value}`, {
-        method: "delete",
+        method: "DELETE",
         headers: {
             "Authorization": `Bearer ${localStorage.getItem("token")}`
         }
