@@ -112,6 +112,7 @@ const renderPosts = (data) => {
         _id.type = "text";
         _id.value = post._id;
         _id.hidden = true;
+        _id.name = "_id";
         submit.type = "submit";
         submit.value = "Update post";
         let commentList = document.createElement("ul");
