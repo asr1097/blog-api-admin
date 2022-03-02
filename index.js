@@ -80,12 +80,20 @@ const renderPosts = (data) => {
         list_item.appendChild(title);
         list_item.appendChild(text);
         list_item.appendChild(date);
-        post.comments.forEach(comment => {
+        post.comments.forEach((comment, index) => {
             let singleComment = document.createElement("li");
             let title = document.createElement("h5");
             let text = document.createElement("p");
             let user = document.createElement("p");
             let date = document.createElement("p");
+            let deleteForm = document.createElement("form");
+            deleteForm.action = `https://sheltered-anchorage-95159.herokuapp.com/admin/${post._id}/${index}`;
+            deleteForm.method = "delete";
+            let deleteInput = document.createElement("input");
+            deleteInput.hidden = true;
+            deleteInput.type = "number";
+            deleteInput.name = "index";
+            deleteInput.value = index;
             title.textContent = comment.title;
             text.textContent = comment.text;
             user.textContent = comment.user;
