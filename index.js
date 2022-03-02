@@ -88,7 +88,7 @@ const renderPosts = (data) => {
             let date = document.createElement("p");
             let deleteForm = document.createElement("form");
             deleteForm.action = `https://sheltered-anchorage-95159.herokuapp.com/admin/${post._id}/${index}`;
-            deleteForm.method = "delete";
+            deleteForm.method = "get";
             let submitInput = document.createElement("input");
             submitInput.type = "submit";
             deleteForm.appendChild(submitInput);
