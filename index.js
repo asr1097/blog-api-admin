@@ -79,7 +79,7 @@ const updatePost = (ev) => {
         text: ev.target.text.value,
         published: ev.target.published.value
     }
-    fetch(`https://sheltered-anchorage-95159.herokuapp.com/admin/${ev.target.id.value}`, {
+    fetch(`https://sheltered-anchorage-95159.herokuapp.com/admin/${ev.target._id.value}`, {
         method: "PUT",
         headers: {
             "Authorization": `Bearer ${localStorage.getItem("token")}`,
