@@ -82,7 +82,8 @@ const updatePost = (ev) => {
     fetch(`https://sheltered-anchorage-95159.herokuapp.com/admin/${ev.target.id.value}`, {
         method: "PUT",
         headers: {
-            "Authorization": `Bearer ${localStorage.getItem("token")}`
+            "Authorization": `Bearer ${localStorage.getItem("token")}`,
+            "Content-Type": "application/json"
         },
         body: JSON.stringify(data)
     }).then(res => location.reload()).catch(err => console.error(err));
