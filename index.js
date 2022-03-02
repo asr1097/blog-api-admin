@@ -1,7 +1,7 @@
 const main = document.getElementById("main");
 
 
-const renderForm = () => {
+const renderForm = (err = "") => {
     let loginForm = document.createElement("form");
     let usernameField = document.createElement("input");
     usernameField.type = "text";
@@ -13,9 +13,13 @@ const renderForm = () => {
     passwordField.id = "password";
     let submitField = document.createElement("input");
     submitField.type = "submit";
+    let error = document.createElement("p");
+    error.id = "error";
+    error.textContent = err;
     loginForm.appendChild(usernameField);
     loginForm.appendChild(passwordField);
     loginForm.appendChild(submitField);
+    loginForm.appendChild(error);
     main.appendChild(loginForm);
 
     loginForm.addEventListener("submit", (ev) => {
@@ -53,6 +57,9 @@ const fetchData = () => {
     })
         .then(res => res.json())
         .then(data => renderPosts(data))
+        .catch(err => {
+            renderForm(err)
+        })
 }
 
 const renderPosts = (data) => {
